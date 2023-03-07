@@ -10,11 +10,14 @@ public class PlayerRotate : MonoBehaviour
 
     //This is how you do this. 
     public ParticleSystem _partSystem;
+    public ParticleSystem _partSystem2;
+
     // Start is called before the first frame update
     void Start()
     {
          
         _partSystem.Stop();
+        _partSystem2.Stop();
     }
 
     // Update is called once per frame
@@ -22,9 +25,23 @@ public class PlayerRotate : MonoBehaviour
     {
         _horizontalInput = Input.GetAxis("Horizontal");
         transform.Rotate(_horizontalInput * _playerRotateSpeed * Time.deltaTime * Vector3.back);
-        if(_horizontalInput == 1)
+        ParticleSystemAnimation();
+    }
+
+    void ParticleSystemAnimation()
+    {
+        if(_horizontalInput <= 0.1f)
         {
             _partSystem.Play();
+        }
+        if (_horizontalInput <= -0.1f)
+        {
+            _partSystem2.Play();
+        }
+        if (_horizontalInput == 0)
+        {
+            _partSystem.Stop();
+            _partSystem2.Stop();
         }
     }
 }
