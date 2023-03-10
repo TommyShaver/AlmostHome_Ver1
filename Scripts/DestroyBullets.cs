@@ -9,7 +9,20 @@ public class DestroyBullets : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(transform.position.x >= _xRange)
+        DestroyOutOfBounds();
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+       if(other.gameObject.tag == "Rock")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+    void DestroyOutOfBounds()
+    {
+        if (transform.position.x >= _xRange)
         {
             Destroy(gameObject);
         }
@@ -25,5 +38,5 @@ public class DestroyBullets : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    }    
 }

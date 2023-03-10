@@ -1,10 +1,14 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BlinkingLight : MonoBehaviour
 {
     [SerializeField] float fadeOutTimer = 5.0f;
+
+
 
     private void Start()
     {
