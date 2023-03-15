@@ -6,6 +6,7 @@ public class RotateRocks : MonoBehaviour
 {
     [SerializeField] float _rockSpeed;
     [SerializeField] float _randomNumber;
+ 
     public int _randomScaleNum;
     public GameObject[] _spawnRockPrefab;
     // Start is called before the first frame update
@@ -26,14 +27,15 @@ public class RotateRocks : MonoBehaviour
     {
 
         // Change roation of rock
-        if(_randomNumber == -1)
+        if (_randomNumber == -1)
         {
-            transform.Rotate(_rockSpeed * Time.deltaTime * Vector3.forward);
+            transform.Rotate(Vector3.forward * Time.deltaTime * _rockSpeed, Space.World);
         }
         else
         {
-            transform.Rotate(_rockSpeed * Time.deltaTime * Vector3.back);
+            transform.Rotate(Vector3.back * Time.deltaTime * _rockSpeed, Space.World);
         }
+       
     }
 
     private void OnCollisionEnter2D(Collision2D other)
