@@ -10,7 +10,7 @@ public class MovingRocks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rocksSpeed = Random.Range(1, 4);
+        _rocksSpeed = Random.Range(1, 9);
     }
 
     // Update is called once per frame

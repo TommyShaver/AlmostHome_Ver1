@@ -6,6 +6,7 @@ public class SmallRocks : MonoBehaviour
 {
     [SerializeField] float _rockSpeed;
     [SerializeField] float _randomNumber;
+    public GameObject rockParticles;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,8 @@ public class SmallRocks : MonoBehaviour
         if (other.gameObject.tag == "Laser")
         {
             Destroy(gameObject);
+            GameObject _endOfLife = Instantiate(rockParticles, transform.position, transform.rotation);
+            Destroy(_endOfLife, 2f);
         }
     }
 }

@@ -6,7 +6,9 @@ public class RotateRocks : MonoBehaviour
 {
     [SerializeField] float _rockSpeed;
     [SerializeField] float _randomNumber;
- 
+    public GameObject rockParticles;
+
+
     public int _randomScaleNum;
     public GameObject[] _spawnRockPrefab;
     // Start is called before the first frame update
@@ -50,10 +52,14 @@ public class RotateRocks : MonoBehaviour
                 Instantiate(_spawnRockPrefab[spawnIndex], transform.position, _spawnRockPrefab[spawnIndex].transform.rotation);
                 Destroy(gameObject);
                 Debug.Log("This worked.");
+                GameObject _endOfLife = Instantiate(rockParticles, transform.position, transform.rotation);
+                Destroy(_endOfLife, 5f);
             }
             else
             {
                 Destroy(gameObject);
+                GameObject _endOfLife = Instantiate(rockParticles, transform.position, transform.rotation);
+                Destroy(_endOfLife, 5f);
             }
         }
     }
