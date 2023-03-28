@@ -10,12 +10,24 @@ public class Bullets : MonoBehaviour
 
     public float bulletForce = 20f;
 
+    private PlayerControls _playerControls;
+
+
+    private void Awake()
+    {
+        _playerControls = GetComponent<PlayerControls>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-      if(Input.GetButtonDown("Fire1"))
+
+        if (_playerControls._isDead == false)
         {
-            Shoot();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+            }
         }
     }
 

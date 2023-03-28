@@ -9,17 +9,20 @@ public class PlayerMovment : MonoBehaviour
     [SerializeField] float _veritcalPostiveBounds = 0;
     [SerializeField] float _veritcalNegitveBounds = -2.0f;
     [SerializeField] int _stayinXbound = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
+    private PlayerControls _playerHealth;
+    private void Awake()
+    {
+        _playerHealth = GetComponent<PlayerControls>();
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
-        StayInBounds();
-        MoveOnVerticalAxis();
+        if(_playerHealth._isDead == false)
+        {
+            StayInBounds();
+            MoveOnVerticalAxis();
+        }
     }
     void StayInBounds()
     {
